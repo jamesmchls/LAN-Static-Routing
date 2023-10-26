@@ -1,0 +1,42 @@
+         --- System Configuration Dialog ---
+
+Would you like to enter the initial configuration dialog? [yes/no]: no
+
+
+Press RETURN to get started!
+
+
+
+Router>
+Router>
+Router>enable
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#interface se2/0
+Router(config-if)#ip address 192.168.10.1 255.255.255.0
+Router(config-if)#clock rate 64000
+Router(config-if)#no sh
+
+%LINK-5-CHANGED: Interface Serial2/0, changed state to down
+Router(config-if)#ex
+Router(config)#int fa0/0
+Router(config-if)#ip address 192.168.1.1 255.255.255.0
+Router(config-if)#no sh
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+ex
+Router(config)#
+%LINK-5-CHANGED: Interface Serial2/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial2/0, changed state to up
+
+Router(config)#
+Router(config)#ip route 192.168.2.0 255.255.255.0 192.168.10.2
+Router(config)#
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Router#ex
